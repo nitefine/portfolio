@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitefine — Stop Overthinking, Launch Your Idea Now</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js untuk Efek Interaksi Logo Flip & State -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#FFCE35',
+                            dark: '#D9AB1C',
+                            light: '#FFF8D6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        hand: ['Caveat', 'cursive'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>    
+        .ambigram-logo {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .flipped {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-sans selection:bg-gold selection:text-slate-900 antialiased">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <!-- LOGO GAMBAR DENGAN EFEK KLIK BERPUTAR (FLIP) -->
+            <div x-data="{ isFlipped: false }" class="flex items-center gap-3 cursor-pointer group" @click="isFlipped = !isFlipped">
+                <div class="flex items-center justify-center">
+                    <img src="logo.png" alt="Nitefine Ambigram Logo" :class="{'flipped': isFlipped}" class="ambigram-logo w-full h-full object-contain" onerror="this.style.display='none'" style="width: 140px;">
+                </div>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
+                <a href="#projects" class="hover:text-black transition">Projets</a>
+                <a href="#metrics" class="hover:text-black transition">Metrics</a>
+                <a href="https://github.com/nitefine" class="bg-black text-gold px-5 py-2.5 rounded-full hover:bg-gold hover:text-black transition duration-200 flex items-center gap-2 font-bold">
+                    <i class="fa-brands fa-github"></i> Github
+                </a>
+            </nav>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden p-2 text-slate-700 hover:text-black text-xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 px-6 py-6 flex flex-col gap-4 font-semibold shadow-md">
+            <a href="#projects" class="mobile-link text-slate-700 hover:text-black">Products</a>
+            <a href="#metrics" class="mobile-link text-slate-700 hover:text-black">Metrics</a>
+            <a href="https://github.com/nitefine" class="bg-black text-gold px-5 py-3 rounded-xl text-center flex items-center justify-center gap-2">
+                <i class="fa-brands fa-github"></i> Github
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-24 pb-28 bg-white border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            
+            <!-- Tagline Badge Solid -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-light border border-gold text-sm font-bold text-slate-900 mb-8">
+                <span class="w-2 h-2 rounded-full bg-black"></span>
+                <span>Stop overthinking, launch your idea now</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15] mb-8">
+                Merakit Solusi Digital Skalabel Untuk Eksekusi Instan.
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed mb-12">
+                Direktori eksklusif proyek web berperforma tinggi, modul komputasi, dan otomatisasi developer tooling modern.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#projects" class="bg-black text-white px-8 py-4 rounded-full font-bold text-base hover:bg-gold hover:text-black transition duration-200 flex items-center gap-2">
+                    Jelajahi Proyek <i class="fa-solid fa-arrow-down text-sm"></i>
+                </a>
+                <a href="#metrics" class="border border-slate-300 bg-white text-slate-800 px-8 py-4 rounded-full font-bold text-base hover:border-black transition duration-200">
+                    Analisis Metrik
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS LIST SECTION -->
+    <section id="projects" class="py-24 bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-2">
+                        Directory Products
+                    </h2>
+                    <p class="text-slate-600 text-sm md:text-base font-medium">Pilih kategori solusi untuk memfilter daftar proyek:</p>
+                </div>
+                
+                <!-- SOLID PILL TABS -->
+                <div class="flex flex-wrap gap-1 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
+                    <button onclick="filterProjects('all')" id="tab-all" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-black text-white transition-all duration-150">Semua</button>
+                    <button onclick="filterProjects('web')" id="tab-web" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold text-slate-700 hover:text-black transition-all duration-150">Web Platforms</button>
+                    <button onclick="filterProjects('helper')" id="tab-helper" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold text-slate-700 hover:text-black transition-all duration-150">Modules & Packages</button>
+                    <button onclick="filterProjects('cli')" id="tab-cli" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold text-slate-700 hover:text-black transition-all duration-150">Automation Tooling</button>
+                </div>
+            </div>
+
+            <!-- ROWS CONTAINER -->
+            <div id="projects-list" class="flex flex-col gap-4">
+                
+                <!-- ROW 1: Codelusion (WEB) -->
+                <div class="project-row group bg-white hover:bg-gold-light border border-slate-200 rounded-2xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6" data-category="web">
+                    <div class="space-y-2 md:w-3/5">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 tracking-wide uppercase border border-slate-200">Web Platforms</span>
+                            <span class="font-mono text-xs text-slate-500">Interactive Editor</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Codelusion — Code Pipeline</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Platform web interaktif untuk menulis dan menguji kode HTML, CSS, dan JS secara real-time dengan Monaco Editor.</p>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-xs font-mono bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md">PHP (Laravel)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://codelusion.com" target="_blank" class="p-2.5 bg-black text-gold rounded-xl hover:bg-gold hover:text-black transition font-bold text-xs flex items-center gap-1.5" title="Live Web">
+                                <i class="fa-solid fa-up-right-from-square"></i> Jelajahi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 2: Momenkan (WEB) -->
+                <div class="project-row group bg-white hover:bg-gold-light border border-slate-200 rounded-2xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6" data-category="web">
+                    <div class="space-y-2 md:w-3/5">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 tracking-wide uppercase border border-slate-200">Web Platforms</span>
+                            <span class="font-mono text-xs text-slate-500">Digital Invitation</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Momenkan — Undangan Digital</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Undangan online bertema WhatsApp circle dengan bubble chat interaktif dan payment gateway.</p>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-xs font-mono bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md">PHP (Laravel)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://momenkan.com" target="_blank" class="p-2.5 bg-black text-gold rounded-xl hover:bg-gold hover:text-black transition font-bold text-xs flex items-center gap-1.5" title="Live Web">
+                                <i class="fa-solid fa-up-right-from-square"></i> Jelajahi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 3: Aksara Jawa (WEB / EXPERIMENTAL) -->
+                <div class="project-row group bg-white hover:bg-gold-light border border-slate-200 rounded-2xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6" data-category="cli">
+                    <div class="space-y-2 md:w-3/5">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 tracking-wide uppercase border border-slate-200">Telegram Bot</span>
+                            <span class="font-mono text-xs text-amber-600 font-bold">Experimental</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Jawartha - Aksara Jawa Translator Bot & API</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Bot Telegram translasi Latin ke Aksara Jawa lengkap dengan akses serverless public API.</p>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-xs font-mono bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md">Node.js</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://t.me/jawartha_bot" target="_blank" class="p-2.5 bg-black text-gold rounded-xl hover:bg-gold hover:text-black transition font-bold text-xs flex items-center gap-1.5" title="Live Web">
+                                <i class="fa-solid fa-robot"></i> Jelajahi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 4: Neemo CLI (CLI / EXPERIMENTAL) -->
+                <div class="project-row group bg-white hover:bg-gold-light border border-slate-200 rounded-2xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6" data-category="cli">
+                    <div class="space-y-2 md:w-3/5">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 tracking-wide uppercase border border-slate-200">Automation Tooling</span>
+                            <span class="font-mono text-xs text-amber-600 font-bold">Experimental</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Neemo CLI — Telegram CS & Admin</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">CLI tools production-ready dengan manajemen PM2 otomatis dan pengaturan env interaktif.</p>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-xs font-mono bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md">Node.js</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://nitefine.github.io/showcase/neemo.html" target="_blank" class="p-2.5 bg-black text-gold rounded-xl hover:bg-gold hover:text-black transition font-bold text-xs flex items-center gap-1.5" title="CLI Tool">
+                                <i class="fa-solid fa-terminal"></i> Jelajahi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 5: Livechat Web (WEB / EXPERIMENTAL) -->
+                <div class="project-row group bg-white hover:bg-gold-light border border-slate-200 rounded-2xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6" data-category="cli">
+                    <div class="space-y-2 md:w-3/5">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 tracking-wide uppercase border border-slate-200">Web Platforms</span>
+                            <span class="font-mono text-xs text-amber-600 font-bold">Experimental</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Firefine - Telegram Livechat Web Bridge</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Widget livechat web yang menjembatani pesan langsung ke bot Telegram CS/Admin secara real-time.</p>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-xs font-mono bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md">Node.js</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://nitefine.github.io/showcase/firefine.html" target="_blank" class="p-2.5 bg-black text-gold rounded-xl hover:bg-gold hover:text-black transition font-bold text-xs flex items-center gap-1.5" title="Live Web">
+                                <i class="fa-solid fa-terminal"></i> Jelajahi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 6: Laravel TimeTravel (HELPER / EXPERIMENTAL) -->
+                <div class="project-row group bg-white hover:bg-gold-light border border-slate-200 rounded-2xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6" data-category="helper">
+                    <div class="space-y-2 md:w-3/5">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 tracking-wide uppercase border border-slate-200">Modules & Packages</span>
+                            <span class="font-mono text-xs text-amber-600 font-bold">Experimental</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Laravel TimeTravel Database Helper</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Composer helper package untuk rollback database instan via terminal saat testing via db:travel.</p>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-xs font-mono bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md">PHP</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://packagist.org/packages/nitefine/laravel-db-timetravel" target="_blank" class="p-2.5 bg-black text-gold rounded-xl hover:bg-gold hover:text-black transition font-bold text-xs flex items-center gap-1.5" title="Package">
+                                <i class="fa-solid fa-cube"></i> Jelajahi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 7: Cross-Over NPM (CLI / EXPERIMENTAL) -->
+                <div class="project-row group bg-white hover:bg-gold-light border border-slate-200 rounded-2xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6" data-category="cli">
+                    <div class="space-y-2 md:w-3/5">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 tracking-wide uppercase border border-slate-200">Automation Tooling</span>
+                            <span class="font-mono text-xs text-amber-600 font-bold">Experimental</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Owlet - Cross-Over OS Sleep Preventer</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Global CLI & NPX package untuk mencegah OS sleep saat proses komputasi atau transfer file besar.</p>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-xs font-mono bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md">Node.js</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://nitefine.github.io/showcase/owlet.html" target="_blank" class="p-2.5 bg-black text-gold rounded-xl hover:bg-gold hover:text-black transition font-bold text-xs flex items-center gap-1.5" title="CLI Tool">
+                                <i class="fa-solid fa-terminal"></i> Jelajahi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 8: My Tarteel (WEB) -->
+                <div class="project-row group bg-white hover:bg-gold-light border border-slate-200 rounded-2xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6" data-category="web">
+                    <div class="space-y-2 md:w-3/5">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 tracking-wide uppercase border border-slate-200">Web Platforms</span>
+                            <span class="font-mono text-xs text-slate-500">Islamic Web App</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">My Tarteel — Al-Qur'an All-in-One</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Web app mushaf digital dengan uji sambung ayat, quote acak, dan audio interaktif di semua fitur.</p>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0 border-slate-100">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-xs font-mono bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md">HTML/CSS/JS (API)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://tarteel.my.id" target="_blank" class="p-2.5 bg-black text-gold rounded-xl hover:bg-gold hover:text-black transition font-bold text-xs flex items-center gap-1.5" title="Live Web">
+                                <i class="fa-solid fa-up-right-from-square"></i> Jelajahi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS & ANALYTICS SECTION -->
+    <section id="metrics" class="py-24 bg-white border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-xs font-mono tracking-widest text-slate-500 uppercase mb-3 block">Engineering Metrics</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                    Distribusi Teknologi & Stack
+                </h2>
+                <p class="text-slate-600 text-base">Komposisi pemanfaatan ekosistem bahasa pemrograman dalam siklus proyek.</p>
+            </div>
+
+            <!-- ANALYTICS CONTAINER SOLID -->
+            <div class="bg-black text-white rounded-3xl p-8 md:p-12 shadow-xl">
+                
+                <!-- PHP / Laravel Bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center font-semibold text-sm mb-3">
+                        <span class="flex items-center gap-2.5 text-slate-200">🐘 Laravel & PHP Ecosystem</span>
+                        <span class="font-mono text-black bg-gold px-3 py-1 rounded-lg text-xs font-bold">55%</span>
+                    </div>
+                    <div class="w-full bg-slate-900 h-3.5 rounded-full overflow-hidden p-0.5 border border-slate-800">
+                        <div class="bg-gold h-full rounded-full transition-all duration-1000" style="width: 55%"></div>
+                    </div>
+                </div>
+
+                <!-- Node.js Bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center font-semibold text-sm mb-3">
+                        <span class="flex items-center gap-2.5 text-slate-200">🟢 Node.js Ecosystem & CLI Services</span>
+                        <span class="font-mono text-black bg-gold px-3 py-1 rounded-lg text-xs font-bold">30%</span>
+                    </div>
+                    <div class="w-full bg-slate-900 h-3.5 rounded-full overflow-hidden p-0.5 border border-slate-800">
+                        <div class="bg-gold h-full rounded-full transition-all duration-1000" style="width: 30%"></div>
+                    </div>
+                </div>
+
+                <!-- Backend & Architecture Bar -->
+                <div class="mb-2">
+                    <div class="flex justify-between items-center font-semibold text-sm mb-3">
+                        <span class="flex items-center gap-2.5 text-slate-200">⚡ Backend Architecture</span>
+                        <span class="font-mono text-black bg-gold px-3 py-1 rounded-lg text-xs font-bold">15%</span>
+                    </div>
+                    <div class="w-full bg-slate-900 h-3.5 rounded-full overflow-hidden p-0.5 border border-slate-800">
+                        <div class="bg-gold h-full rounded-full transition-all duration-1000" style="width: 15%"></div>
+                    </div>
+                </div>
+
+                <div class="mt-10 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 font-mono gap-4">
+                    <span>> TOTAL_PROJECTS: 8 RELEASES</span>
+                    <span>> STATUS: READY FOR SCALING</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white text-slate-900 py-12">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <!-- Logo Handwrite di Footer -->
+                <span class="font-hand text-3xl font-bold text-slate-900">
+                    nitefine<span class="text-gold">.</span>
+                </span>
+                <p class="text-slate-600 text-sm mt-1">Stop overthinking, launch your idea now.</p>
+            </div>
+            <div class="flex items-center gap-6 text-sm font-medium text-slate-700">
+                <a href="https://nitefine.com" target="_blank" class="hover:text-black transition">Website</a>
+                <a href="mailto:izam@nitefine.com" class="hover:text-black transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPT -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Filter Projects Function
+        function filterProjects(category) {
+            const rows = document.querySelectorAll('.project-row');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-black', 'text-white');
+                btn.classList.add('text-slate-700');
+            });
+
+            const activeBtn = document.getElementById(`tab-${category}`);
+            activeBtn.classList.add('bg-black', 'text-white');
+            activeBtn.classList.remove('text-slate-700');
+
+            rows.forEach(row => {
+                const rowCategory = row.getAttribute('data-category');
+                if (category === 'all' || rowCategory === category) {
+                    row.style.display = 'flex';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
